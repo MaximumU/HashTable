@@ -1,0 +1,3 @@
+puiblic Class Iterator<Type> {
+    
+}
