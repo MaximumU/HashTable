@@ -1,24 +1,27 @@
-import java.util.*;
 import java.io.*;
 
 public class HashTable {
 
-// Methods you have to supply:
-//
-//  public void put(String key) {
-//  }
-//
-//  public String get(String key) {
-//  }
-//
-//  public String remove(String key){
-//	}
-//
-//  public Iterator keys() {
-//  }
-//
-//  public void print(){
-//	}
+//Methods you have to supply:
+
+ public void put(String key) {
+    
+ }
+
+ public String get(String key) {
+    return null;
+ }
+
+ public String remove(String key){
+    return null;
+ }
+
+ public Iterator keys() {
+    return null;
+ }
+
+ public void print(){
+	}
 	/**
 	 * Loads this HashTable from a file named "Lookup.dat".
 	 */
@@ -51,7 +54,7 @@ public class HashTable {
                     System.out.println("Error in input file");
                     System.exit(1);
                 }
-                put(key, value);
+                put(key);
             }
         }
         catch (IOException e) {
@@ -109,5 +112,18 @@ public class HashTable {
      */
     private String removeNewlines(String value) {
         return value.replaceAll("\r|\n", " ");
+    }
+
+    private class myItr implements Iterator{
+
+        @Override
+        public boolean hasNext() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Object next() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 }
