@@ -1,23 +1,39 @@
 import java.io.*;
-
+import java.util.*;
 public class HashTable {
+
+    public int tableSize = 4;
+    ArrayList<String>[] arr = new ArrayList[tableSize];
+
 
 //Methods you have to supply:
 
  public void put(String key) {
-    
+    int arrayIndex = Math.abs(key.hashCode()) % tableSize;
+    arr[arrayIndex].add(key);
+
  }
 
  public String get(String key) {
+    int arrayIndex = Math.abs(key.hashCode()) % tableSize;
+    for(int i = 0; i < arr[arrayIndex].size(); i++)
+        if(arr[arrayIndex].get(i).equals(key))
+            return key;
     return null;
  }
 
  public String remove(String key){
+    int arrayIndex = Math.abs(key.hashCode()) % tableSize;
+    for(int i = 0; i < arr[arrayIndex].size(); i++)
+        if(arr[arrayIndex].get(i).equals(key)){
+            arr[arrayIndex].remove(i);
+            return key;
+        }
     return null;
  }
 
  public Iterator keys() {
-    return null;
+    return new myItr();
  }
 
  public void print(){
