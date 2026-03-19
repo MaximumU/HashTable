@@ -11,7 +11,21 @@ public class HashTable {
  public void put(String key) {
     int arrayIndex = Math.abs(key.hashCode()) % tableSize;
     arr[arrayIndex].add(key);
+    int count = 0;
+    for(ArrayList<String> list : arr)
+        if(list.get(0) != null)
+            count ++;
+    if(count > (0.67)*tableSize)
+        resize();
+ }
 
+ private void resize(){
+    tableSize = tableSize * 2;
+    ArrayList<String>[] oldArr = arr;
+    arr = new ArrayList[tableSize];
+    for(ArrayList<String> list : oldArr)
+        for(String key : list)
+            put(key);
  }
 
  public String get(String key) {
